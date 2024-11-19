@@ -1,16 +1,16 @@
-from flask import Flask, jsonify, request
+# Importing flask module in the project is mandatory
+# An object of Flask class is our WSGI application.
+from flask import Flask
 
-# Initialize the Flask app
+# Flask constructor takes the name of 
+# current module (__name__) as argument.
 app = Flask(__name__)
 
-# Define the 'greet' endpoint
-@app.route('/greet', methods=['GET'])
-def greet():
-    # Get the 'name' parameter from the query string, default to 'World' if not provided
-    name = request.args.get('name', 'World')
-    # Return a JSON response with a greeting message
-    return jsonify({'message': f'Hello, {name}!'})
+# The route() function of the Flask class is a decorator, 
+# which tells the application which URL should call 
+# the associated function.
+@app.route('/')
+# ‘/’ URL is bound with hello_world() function.
+def hello_world():
+    return 'Hello Thakshi'
 
-# Start the server if this script is run directly
-if __name__ == '__main__':
-    app.run(debug=True)
